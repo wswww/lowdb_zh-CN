@@ -5,6 +5,8 @@ __:警告: 实验__
 
 `lowdb/lib/fp` lets you use [`lodash/fp`](https://github.com/lodash/lodash/wiki/FP-Guide), [`Ramda`](https://github.com/ramda/ramda) or simple JavaScript functions with lowdb.
 
+`lowdb/lib/fp` 允许你使用 [`lodash/fp`](https://github.com/lodash/lodash/wiki/FP-Guide), [`Ramda`](https://github.com/ramda/ramda) 或带有lowdb的简单JavaScript函数。
+
 It can help reducing the size of your `bundle.js`
 
 它可以帮助减少`bundle.js`的大小
