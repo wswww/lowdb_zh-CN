@@ -35,26 +35,30 @@ const adapter = new FileSync('db.json')
 const db = low(adapter)
 
 // Set some defaults (required if your JSON file is empty)
+// 设置一些默认值(如果您的JSON文件为空,则需要)
 db.defaults({ posts: [], user: {}, count: 0 })
   .write()
 
 // Add a post
+// 添加一个 post
 db.get('posts')
   .push({ id: 1, title: 'lowdb is awesome'})
   .write()
 
 // Set a user using Lodash shorthand syntax
+// 使用 Lodash 简写语法设置 user
 db.set('user.name', 'typicode')
   .write()
   
 // Increment count
+// 增量计数
 db.update('count', n => n + 1)
   .write()
 ```
 
 Data is saved to `db.json`
 
-数据保存到`db.json`
+数据保存到了`db.json`
 
 ```json
 {
@@ -74,6 +78,7 @@ You can use any of the powerful [lodash](https://lodash.com/docs) functions, lik
 
 ```js
 // For performance, use .value() instead of .write() if you're only reading from db
+// 对于性能,如果您只是从 db 读取,请使用 .value() 而不是 .write()
 db.get('posts')
   .find({ id: 1 })
   .value()
@@ -83,7 +88,7 @@ Lowdb is perfect for CLIs, small servers, Electron apps and npm packages in gene
 
 It supports __Node__, the __browser__ and uses __lodash API__, so it's very simple to learn. Actually, if you know Lodash, you already know how to use lowdb :wink:
 
-Lowdb非常适合CLI,小型服务器,Electron应用程序和npm软件包.
+Lowdb非常适合 CLIs ,小型服务器,Electron应用程序和npm软件包.
 
 它支持 __Node__ ,__browow__ 并使用 __lodash API__,因此学习起来非常简单. 实际上,如果你知道Lodash,你已经知道如何使用lowdb.
 
@@ -140,7 +145,7 @@ __db.[...].write()__ and __db.[...].value()__
 
 On the other hand, `value()` is just [\_.prototype.value()](https://lodash.com/docs/4.17.4#prototype-value) and should be used to execute a chain that doesn't change database state.
 
-另一方面,`value()`只是 [\_.prototype.value()](https://lodash.com/docs/4.17.4#prototype-value) ,应该用来执行一个链 不会更改数据库状态.
+另一方面,`value()`只是 [\_.prototype.value()](https://lodash.com/docs/4.17.4#prototype-value) ,应该用来执行一个链,不会更改数据库状态.
 
 
 ```js
@@ -441,16 +446,20 @@ db._.mixin(lodashId)
 
 // We need to set some default values, if the collection does not exist yet
 // We also can store our collection
+// 如果 collection 尚不存在,我们需要设置一些默认值
+// 我们也可以存储我们的 collection
 const collection = db
   .defaults({ posts: [] })
   .get('posts')
 
 // Insert a new post...
+// 插入新 post ...
 const newPost = collection
   .insert({ title: 'low!' })
   .write()
 
 // ...and retrieve it using its id
+// ...并使用其 id 检索它
 const post = collection
   .getById(newPost.id)
   .value()
@@ -471,10 +480,12 @@ class MyStorage {
 
   read() {
     // Should return data (object or array) or a Promise
+    // 应返回数据(对象或数组)或Promise
   }
 
   write(data) {
     // Should return nothing or a Promise
+    // 不应该返回任何内容或Promise
   }
 }
 
