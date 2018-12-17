@@ -1,4 +1,5 @@
 # Examples
+> 在不同环境下的使用示例
 
 ## CLI
 
@@ -37,6 +38,7 @@ db.defaults({ posts: [] })
   .write()
 
 // Data is automatically saved to localStorage
+// 数据自动保存到 localStorage
 db.get('posts')
   .push({ title: 'lowdb' })
   .write()
@@ -48,6 +50,10 @@ Please __note__ that if you're developing a local server and don't expect to get
 
 But if you need to avoid blocking requests, you can do so by using `file-async` storage.
 
+请 __note__ 如果您正在开发本地服务器并且不希望获得并发请求,则使用 `file-sync` 存储通常更容易,这是默认设置.
+
+但是,如果您需要避免阻止请求,可以使用`file-async`存储来实现.
+
 ```js
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -55,10 +61,12 @@ const low = require('lowdb')
 const FileAsync = require('lowdb/adapters/FileAsync')
 
 // Create server
+// 创建服务器
 const app = express()
 app.use(bodyParser.json())
 
 // Create database instance and start server
+// 创建数据库实例并启动服务器
 const adapter = new FileAsync('db.json')
 low(adapter)
   .then(db => {
@@ -83,6 +91,7 @@ low(adapter)
     })
 
     // Set db default values
+    // 设置 db 默认值
     return db.defaults({ posts: [] }).write()
   })
   .then(() => {
@@ -93,6 +102,8 @@ low(adapter)
 ## In-memory
 
 With this adapter, calling `write` will do nothing. One use case for this adapter can be for tests.
+
+使用此适配器,调用`write`将不执行任何操作.此适配器的一个用例可用于测试.
 
 ```js
 const fs = require('fs')
